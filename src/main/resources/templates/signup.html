@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -69,41 +66,41 @@
       <div class="container" style="max-width: 580px;">
 
 
-        <form action="forms/signin.php" method="post" role="form" class="php-email-form">
+        <form  method="post" th:object="${newuser}" th:action="@{/saveuser}" class="php-email-form">
 
           <div class="section-title">
             <h2>Sign <span>up</span></h2>
-            <p> Do you have an account?<br><a href="#signin">Sign in here!</a></p>
+            <p> Do you have an account?<br><a href="/signin">Sign in here!</a></p>
           </div>
           
           <div class="form-row">
             
             <div class="col-md-12 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Name" data-rule="minlen:4"
+              <input type="text" th:field="*{name}" class="form-control" placeholder="Name" data-rule="maxlen:255"
                 data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
 
             <div class="col-md-12 form-group">
-              <input type="email" name="name" class="form-control" id="email" placeholder="Email" data-rule="minlen:4"
+              <input type="email" th:field="*{email}" class="form-control" placeholder="Email" data-rule="minlen:4"
                 data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
 
             <div class="col-md-12 form-group">
-              <input type="phone" name="name" class="form-control" id="phone" placeholder="Phone" data-rule="minlen:4"
+              <input type="phone" th:field="*{phone}" class="form-control"  placeholder="Phone" data-rule="minlen:4"
                 data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
 
             <div class="col-md-12 form-group">
-              <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-rule="minlen:4"
+              <input type="password" th:field="*{password}" class="form-control"  placeholder="Password" data-rule="minlen:4"
                 data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
 
             <div class="col-md-12 form-group">
-              <input type="password" name="confirm_password" class="form-control" id="password" placeholder="Confirm Password" data-rule="minlen:4"
+              <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" data-rule="minlen:4"
                 data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
@@ -163,7 +160,7 @@
   <script th:src="@{assets/vendor/owl.carousel/owl.carousel.min.js}"></script>
 
   <!-- Template Main JS File -->
-  <script th:src="@{assets/js/main.js"></script>
+  <script th:src="@{assets/js/main.js}"></script>
 
 </body>
 
