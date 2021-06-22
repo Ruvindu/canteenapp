@@ -1,10 +1,7 @@
 package com.fot.canteenapp.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class RouteController {
@@ -14,5 +11,8 @@ public class RouteController {
         return "home";
     }
 
-
+    @GetMapping(path = "/dashboard")
+    public String navigatetodashboard() {
+        return "admin_template/admin_dashboard";
+    }
 }

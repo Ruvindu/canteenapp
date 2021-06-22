@@ -42,20 +42,19 @@ public class UserController {
 
     @RequestMapping(value = "/signinuser",method = RequestMethod.POST)
     public String siginin(@ModelAttribute("signinuser")User user){
-//        System.out.println(user.getEmail());
-//        System.out.println(user.getRole());
-//        System.out.println(user.getPassword());
+
         User logeduser = userser.login(user.getEmail(),user.getPassword());
+
         if (Objects.nonNull(logeduser)){
-            System.out.println(logeduser.getEmail());
             System.out.println(logeduser.getRole());
-            System.out.println(logeduser.getPassword());
-            System.out.println(logeduser.getPhone());
-            System.out.println(logeduser.getName());
+            if (logeduser.getRole().equals("admin")){
+                return "redirect:/dashboard";
+            }else{
+                return "redirect:/";
+            }
         }else{
             return "redirect:/signin?loginerr";
         }
-        return "redirect:/";
     }
 
 }
