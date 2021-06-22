@@ -17,4 +17,10 @@ public class UserService {
     public void insert(User user){
         repo.save(user);
     }
+
+    public User login(String email , String password ){
+        User u = repo.findByEmailAndPassword(email,password);
+        return u;
+    }
+
 }

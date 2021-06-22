@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -47,9 +47,9 @@
         <nav class="nav-menu d-none d-lg-block">
             <ul>
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/contact">Contact</a></li>
 
                 <li class="signin text-center"><a href="/signin">Sign in</a></li>
             </ul>
@@ -126,7 +126,7 @@
     </div>
 </section><!-- End Hero -->
 
-<main id="main">
+<main>
 
 
 
@@ -377,131 +377,7 @@
 
 
 
-    <!-- ======= Book A Table Section ======= -->
-    <section id="signin" class="signin">
-        <div class="container">
 
-            <div class="section-title">
-                <h2>Book a <span>Table</span></h2>
-                <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
-            </div>
-
-            <form action="forms/signin.php" method="post" role="form" class="php-email-form">
-                <div class="form-row">
-                    <div class="col-lg-4 col-md-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 form-group">
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 form-group">
-                        <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 form-group">
-                        <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 form-group">
-                        <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-                        <div class="validate"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-                    <div class="validate"></div>
-                </div>
-                <div class="mb-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-                </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-        </div>
-    </section><!-- End Book A Table Section -->
-
-
-
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <div class="section-title">
-                <h2><span>Contact</span> Us</h2>
-                <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
-            </div>
-        </div>
-
-
-
-        <div class="container mt-5">
-
-            <div class="info-wrap">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 info">
-                        <i class="icofont-google-map"></i>
-                        <h4>Location:</h4>
-                        <p>A108 Adam Street<br>New York, NY 535022</p>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
-                        <i class="icofont-clock-time icofont-rotate-90"></i>
-                        <h4>Open Hours:</h4>
-                        <p>Monday-Saturday:<br>11:00 AM - 2300 PM</p>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
-                        <i class="icofont-envelope"></i>
-                        <h4>Email:</h4>
-                        <p>info@example.com<br>contact@example.com</p>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
-                        <i class="icofont-phone"></i>
-                        <h4>Call:</h4>
-                        <p>+1 5589 55488 51<br>+1 5589 22475 14</p>
-                    </div>
-                </div>
-            </div>
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                        <div class="validate"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                    <div class="validate"></div>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                    <div class="validate"></div>
-                </div>
-                <div class="mb-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-        </div>
-    </section><!-- End Contact Section -->
 
 </main><!-- End #main -->
 
@@ -533,14 +409,14 @@
 <script th:src="@{assets/vendor/jquery/jquery.min.js}"></script>
 <script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{assets/vendor/jquery.easing/jquery.easing.min.js}"></script>
-<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+<!--<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>-->
 <script th:src="@{assets/vendor/jquery-sticky/jquery.sticky.js}"></script>
 <script th:src="@{assets/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
 <script th:src="@{assets/vendor/venobox/venobox.min.js}"></script>
 <script th:src="@{assets/vendor/owl.carousel/owl.carousel.min.js}"></script>
 
 <!-- Template Main JS File -->
-<script th:src="@{assets/js/main.js"></script>
+<script th:src="@{assets/js/main.js}"></script>
 
 </body>
 

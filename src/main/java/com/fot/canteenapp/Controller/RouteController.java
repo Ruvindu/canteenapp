@@ -14,13 +14,5 @@ public class RouteController {
         return "home";
     }
 
-    @GetMapping(path = "/signin")
-    public String navigatetosignin() {
-        return "signin";
-    }
-//
-//    @GetMapping(path = "/signup")
-//    public String navigatetosignout() {
-//        return "signup";
-//    }
+
 }
