@@ -3,16 +3,19 @@ package com.fot.canteenapp.Entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "inventory")
 public class Inventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="item_id")
     private Integer itemId;
+
     @Column(name="item_name")
     private String itemName;
+
     @Column(name="item_price")
     private Double itemPrice;
+
     @Column(name="item_qty")
     private Integer itemQty;
 

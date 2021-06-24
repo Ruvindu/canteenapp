@@ -10,18 +10,17 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class InventoryService {
 
     @Autowired
-    private InventoryRepository invrepo;
+   private InventoryRepository invRepo;
 
-    public void save(Inventory inv){
-        invrepo.save(inv);
-    }
+   public void saveItem(Inventory inv){
+        invRepo.save(inv);
+   }
 
-    public List<Inventory> getAllItems() {
-        return (List<Inventory>) invrepo.findAll();
-    }
+   public List<Inventory> getAllItems(){
+       return invRepo.findAll();
+   }
 
 }

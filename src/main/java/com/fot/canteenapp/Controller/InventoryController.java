@@ -5,6 +5,7 @@ import com.fot.canteenapp.Services.InventoryService;
 import com.fot.canteenapp.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,16 +16,17 @@ public class InventoryController {
     @Autowired
     private InventoryService invser;
 
-    @PostMapping(value = "/saveitem")
+    @PostMapping("/saveitem")
     public String insertItem(@RequestBody Inventory inv){
-        invser.save(inv);
-
+        invser.saveItem(inv);
         return "Item added";
     }
 
-    @GetMapping(value = "/getitems")
-    public List<Inventory> getItems(){
-        return invser.getAllItems();
+    @RequestMapping("/all")
+    public String viewHomePage(Model model){
+        List<Inventory> listProducts = invser.getAllItems();
+        model.addAttribute("listProducts",listProducts);
+        return "home";
     }
 
 }
