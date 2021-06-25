@@ -23,4 +23,7 @@ public class InventoryService {
        return invRepo.findAll();
    }
 
+   public void deleteItem(Integer id){
+       invRepo.deleteById(id);
+   }
 }

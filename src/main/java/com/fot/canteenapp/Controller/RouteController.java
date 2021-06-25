@@ -11,8 +11,4 @@ public class RouteController {
         return "home";
     }
 
-    @GetMapping(path = "/dashboard")
-    public String navigatetodashboard() {
-        return "admin_template/admin_dashboard";
-    }
 }
