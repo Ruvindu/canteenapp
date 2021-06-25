@@ -159,7 +159,31 @@
                                     <p class="card-text" th:text="${'Rs.' + product.itemPrice}"></p>
                                     <p class="card-text" th:text="${'Rs.' + product.itemQty}"></p>
                                     <a th:href="@{'/delete/' + ${product.itemId}}" class="btn btn-danger">Delete</a>
-                                    <a th:href="@{'/update/' + ${product.itemId}}" class="btn btn-warning">Update</a>
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Update
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <form th:action="@{/save}" th:object="${item}" method="post" class="p-1 m-1">
+                                            <input type="hidden" th:name="itemId" th:value="${product.itemId}">
+                                            <div class="form-group">
+                                                <label for="itemName">Item Name</label>
+                                                <input type="text" class="form-control" th:name="itemName" th:value="${product.itemName}" placeholder="Item Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="itemPrice">Item Price</label>
+                                                <input type="number" class="form-control" th:name="itemPrice"  th:value="${product.itemPrice}" placeholder="Item Price" min="0">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="itemQty">Item Quantity</label>
+                                                <input type="number" class="form-control" th:name="itemQty"  th:value="${product.itemQty}" placeholder="Item Quantity" min="0">
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-dark" type="reset">Reset</button>
+                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
