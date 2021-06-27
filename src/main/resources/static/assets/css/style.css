@@ -820,7 +820,7 @@ section {
   display: block;
   font-size: 28px;
   font-weight: 700;
-  color: #ffcf88;
+  color: #74b800;
 }
 
 .why-us .box h4 {
@@ -844,9 +844,39 @@ section {
   box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
 }
 
-.why-us .box:hover span, .why-us .box:hover h4, .why-us .box:hover p {
+.why-us .box:hover span,
+.why-us .box:hover h4,
+.why-us .box:hover p {
   color: #fff;
 }
+
+.order-btn {
+  color: #FFF;
+  background-color: #74b800;
+  padding: 5px 15px 5px 15px;
+  border-radius: 20px;
+}
+
+.addcart-btn {
+  border: 1px solid #74b800;
+  padding: 5px 15px 5px 15px;
+  border-radius: 20px;
+}
+
+.why-us .box:hover .order-btn {
+  color: #74b800;
+  background-color: #FFF;
+  padding: 5px 15px 5px 15px;
+  border-radius: 20px;
+}
+
+.why-us .box:hover .addcart-btn {
+  color: #FFF;
+  border: 1px solid #FFF;
+  padding: 5px 15px 5px 15px;
+  border-radius: 20px;
+}
+
 
 /*--------------------------------------------------------------
 # Menu Section

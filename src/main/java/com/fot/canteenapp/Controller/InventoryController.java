@@ -22,7 +22,7 @@ public class InventoryController {
         return "Item added";
     }
 
-    @RequestMapping("/all")
+    @RequestMapping("/")
     public String viewHomePage(Model model){
         List<Inventory> listProducts = invser.getAllItems();
         model.addAttribute("listProducts",listProducts);
