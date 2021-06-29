@@ -15,6 +15,7 @@ public class AdminController {
     @Autowired
     private InventoryService invser;
 
+
     @RequestMapping("/dashboard")
     public String viewHomePage(Model model){
         List<Inventory> listProducts = invser.getAllItems();
