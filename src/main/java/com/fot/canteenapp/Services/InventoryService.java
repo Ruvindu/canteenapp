@@ -2,12 +2,10 @@ package com.fot.canteenapp.Services;
 
 import com.fot.canteenapp.Entity.Inventory;
 import com.fot.canteenapp.Repository.InventoryRepository;
-import com.fot.canteenapp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InventoryService {
@@ -26,4 +24,9 @@ public class InventoryService {
    public void deleteItem(Integer id){
        invRepo.deleteById(id);
    }
+
+   public Optional<Inventory> getItemData(Integer itemId){
+        return invRepo.findById(itemId);
+   }
+
 }

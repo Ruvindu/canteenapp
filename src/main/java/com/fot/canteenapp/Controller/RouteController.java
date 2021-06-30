@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RouteController {
 
-@GetMapping(path = "/")
-public String navigatetohome() {
-    return "home";
-}
+//@GetMapping(path = "/")
+//public String navigatetohome() {
+//    return "home";
+//}
 
 }

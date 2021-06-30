@@ -57,7 +57,6 @@ public class UserController {
             if(user_s==null){
                 user_s = new ArrayList<>();
                 request.getSession().setAttribute("USER_SESSION", user_s);
-
             }
             user_s.add(logeduser.getId().toString());
             user_s.add(logeduser.getName());
