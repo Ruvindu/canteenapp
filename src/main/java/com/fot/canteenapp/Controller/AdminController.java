@@ -19,7 +19,7 @@ public class AdminController {
 
     @RequestMapping("/dashboard")
     public String viewHomePage(Model model, HttpSession session){
-        
+
 //        user authenticate
         if (!auth.getAuth().is_admin(session))
             return "redirect:/signin";
