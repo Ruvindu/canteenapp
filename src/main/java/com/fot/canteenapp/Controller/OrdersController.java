@@ -25,7 +25,7 @@ public class OrdersController {
             return "redirect:/signin";
 
         orderser.saveOrder(order);
-        return "redirect:/";
+        return "redirect:/?success";
     }
 
 
