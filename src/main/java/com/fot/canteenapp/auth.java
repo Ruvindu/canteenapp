@@ -34,4 +34,21 @@ public class auth {
         }
     }
 
+    public Boolean is_user(HttpSession session){
+        List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
+
+        try {
+            user_s.get(0);
+            System.out.println(user_s.get(3));
+
+            if (user_s.get(3).equals("user")){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 }

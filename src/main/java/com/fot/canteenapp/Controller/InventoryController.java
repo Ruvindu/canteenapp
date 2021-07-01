@@ -6,6 +6,7 @@ import com.fot.canteenapp.Entity.Orders;
 import com.fot.canteenapp.Entity.User;
 import com.fot.canteenapp.Services.InventoryService;
 import com.fot.canteenapp.Services.UserService;
+import com.fot.canteenapp.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +37,6 @@ public class InventoryController {
         List<Inventory> listProducts = invser.getAllItems();
         model.addAttribute("listProducts",listProducts);
 
-
         @SuppressWarnings("unchecked")
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
 
@@ -53,6 +53,10 @@ public class InventoryController {
     //proceed order when user pressed order now
     @RequestMapping(method=RequestMethod.GET, value="/proceedorder")
     public String proceedorder(Model model,@RequestParam(value = "item") Integer itemid,HttpSession session){
+        //user authenticate
+        if (!auth.getAuth().is_user(session))
+            return "redirect:/signin";
+
         Inventory Productdata = invser.getItemData(itemid);
         model.addAttribute("productdata",Productdata);
         Orders order = new Orders();

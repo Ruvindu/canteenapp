@@ -51,7 +51,10 @@
                 <li><a href="#menu" class="scrollto">Menu</a></li>
                 <li><a href="/contact">Contact</a></li>
 
-                <li class="signin text-center"><a href="/signin">Sign in</a></li>
+                <li class="signin text-center">
+                    <a href="/signin" th:if="${sess==null}">Sign in</a>
+                    <a href="/signout" th:if="${sess!=null}">Sign out</a>
+                </li>
             </ul>
         </nav><!-- .nav-menu -->
 
@@ -75,7 +78,7 @@
                             <p class="animate__animated animate__fadeInUp">" Healthy does not mean starving yourself ever. Healthy means eating the right food in the right amount "</p>
                             <div>
                                 <a href="#menu" class="btn-menu animate__animated animate__fadeInUp scrollto">Our Menu</a>
-                                <a href="/signin" class="btn-book animate__animated animate__fadeInUp scrollto">Sign in</a>
+                                <a href="/signin" class="btn-book animate__animated animate__fadeInUp scrollto" th:if="${sess==null}">Sign in</a>
                             </div>
                         </div>
                     </div>
