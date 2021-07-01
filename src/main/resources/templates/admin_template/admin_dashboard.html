@@ -61,9 +61,9 @@
                         <a class="js-arrow" href="/">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
-                    <li class="has-sub">
-                        <a class="js-arrow" href="#sales">
-                            <i class="fas fa-tachometer-alt"></i>Sales</a>
+                    <li class="has-sub" id="salesLink">
+
+                            <i class="fas fa-tachometer-alt"></i>Sales
                     </li>
                 </ul>
             </div>
@@ -86,9 +86,15 @@
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li class="has-sub">
-                        <a class="js-arrow" href="#sales">
+                        <a class="js-arrow" href="#" onclick="myClick()">
                             <i class="fas fa-book"></i>Sales</a>
                     </li>
+                    <script>
+                        function myClick(){
+                            document.getElementById("sales").scrollIntoView();
+                        }
+
+                    </script>
                 </ul>
             </nav>
         </div>
@@ -174,9 +180,38 @@
 
                     <div class="row" id="sales">
                         <div class="col-md-12">
-                            <div class="overview-wrap" >
-                                <h2 class="title-1">Sales Overview</h2>
-
+                            <h2 class="title-1">Sales Overview</h2>
+                            <div class="overview-wrap">
+                                <table class="table mt-4 " style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 20px 8px #d0d0d0; background: #fff">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -214,6 +249,7 @@
 
 <!-- Main JS-->
 <script src="assets/admin/js/main.js"></script>
+
 
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
