@@ -5,7 +5,7 @@ import com.fot.canteenapp.Repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class InventoryService {
@@ -25,8 +25,8 @@ public class InventoryService {
        invRepo.deleteById(id);
    }
 
-   public Optional<Inventory> getItemData(Integer itemId){
-        return invRepo.findById(itemId);
+   public Inventory getItemData(Integer itemId){
+        return invRepo.findById(itemId).get();
    }
 
 }

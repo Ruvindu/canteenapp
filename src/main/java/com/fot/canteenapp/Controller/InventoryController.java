@@ -2,6 +2,7 @@ package com.fot.canteenapp.Controller;
 
 import com.fot.canteenapp.Entity.Cart;
 import com.fot.canteenapp.Entity.Inventory;
+import com.fot.canteenapp.Entity.Orders;
 import com.fot.canteenapp.Entity.User;
 import com.fot.canteenapp.Services.InventoryService;
 import com.fot.canteenapp.Services.UserService;
@@ -51,11 +52,15 @@ public class InventoryController {
 
     //proceed order when user pressed order now
     @RequestMapping(method=RequestMethod.GET, value="/proceedorder")
-    public String proceedorder(Model model,@RequestParam(value = "item") Integer itemid){
-        Optional<Inventory> Productdata = invser.getItemData(itemid);
+    public String proceedorder(Model model,@RequestParam(value = "item") Integer itemid,HttpSession session){
+        Inventory Productdata = invser.getItemData(itemid);
         model.addAttribute("productdata",Productdata);
+        Orders order = new Orders();
+        model.addAttribute("neworder",order);
+
+        List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
+        model.addAttribute("sess", user_s.get(0));
         return "proceedorder";
-//        return  Productdata;
     }
 
 

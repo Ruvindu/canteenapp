@@ -66,7 +66,7 @@
         <div class="container">
 
             <div class="section-title">
-                <h2>My food<span> cart</span></h2>
+                <h2>My new<span> order</span></h2>
             </div>
 
 
@@ -124,39 +124,38 @@
 
             <div class="row menu-container">
 
-
-                <div class="col-lg-6 menu-item filter-starters" id="1" >
+                <form method="post" th:object="${neworder}" th:action="@{/placeorder}">
+                <div class="col-lg-6 menu-item filter-starters" th:id="${productdata.itemId}" >
                     <div class="menu-content">
-                        <input type="hidden" class="_value_price_of_one" value=30.00>
-                        <input type="hidden" class="_value_total_price" value=30.00>
-                        <input type="hidden" class="_value_total_qty" value=1>
+                        <input type="hidden" th:value=${productdata.itemId} th:name="itemId">
+                        <input type="hidden" th:value=${sess} th:name="userId">
+                        <input type="hidden" th:value=1 th:name="status">
+
+                        <input type="hidden" class="_value_price_of_one" th:value=${productdata.itemPrice} >
+                        <input type="hidden" class="_value_total_price" th:value=${productdata.itemPrice} th:name="totalPrice">
+                        <input type="hidden" class="_value_total_qty" value=1 th:name="itemQty">
                         <input type="hidden" class="_value_min" value=1>
-                        <input type="hidden" class="_value_max" value=5>
-                        <a href="#">Roles</a><span>LKR <span class="totalprice" th:text="${productdata}"></span></span>
+                        <input type="hidden" class="_value_max" th:value=${productdata.itemQty}>
+
+                        <a href="#">Roles</a><span>LKR <span class="totalprice" th:text="${productdata.itemPrice}"></span></span>
                     </div>
                     <div class="menu-ingredients">
                         <label>Quantity </label><input class="qty" type="number" value=1 readonly>
-                        <div onclick="incqty(1)">+</div>
-                        <div onclick="decqty(1)">-</div>
+                        <div th:onclick="'incqty(\'' + ${productdata.itemId} + '\');'" >+</div>
+                        <div th:onclick="'decqty(\'' + ${productdata.itemId} + '\');'" >-</div>
 
-                        <span>In Stock (5)</span>
-                        <span><a href="/remove">Remove</a></span>
+                        <span>In Stock (<span th:text="${productdata.itemQty}"></span>)</span>
                     </div>
+
+                    <input type="submit" class="btn btn-info float-right d-inline-block mt-4" value="Place the Order">
                 </div>
 
 
 
-
-
-
+                </form>
 
             </div>
 
-
-            <div class="text-center mt-5">
-                <div class="mb-3">Net Total : </div>
-                <a href="/order" class="btn btn-info">Order now</a>
-            </div>
 
         </div>
     </section><!-- End Menu Section -->

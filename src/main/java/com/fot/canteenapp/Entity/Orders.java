@@ -22,14 +22,13 @@ public class Orders {
     private Integer itemQty;
 
     @Column(name="total_price")
-    private Double totalPirce;
+    private Float totalPrice;
 
     @Column(name="order_date")
     private Date orderDate;
 
     @Column(name="status")
     private Integer status;
-
 
     public Integer getOrderId() {
         return orderId;
@@ -63,12 +62,12 @@ public class Orders {
         this.itemQty = itemQty;
     }
 
-    public Double getTotalPirce() {
-        return totalPirce;
+    public Float getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalPirce(Double totalPirce) {
-        this.totalPirce = totalPirce;
+    public void setTotalPrice(Float totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Date getOrderDate() {

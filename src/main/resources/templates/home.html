@@ -145,7 +145,10 @@
                         <span th:text="${product.itemName}"></span>
                         <h4 th:text="${ 'Rs.' + product.itemPrice}"></h4>
                         <p class="mb-3" th:text="${ 'Available Quantity : ' + product.itemQty}"></p>
-                        <a href="/ordernow/item" class="order-btn" >Order now</a>
+
+                        <a th:if="${sess!=null}" th:href="@{/proceedorder(item=${product.itemId})}" class="order-btn" >Order now</a>
+                        <a th:if="${sess==null}" th:href="@{/signin}" class="order-btn" >Order now</a>
+
                         <a th:if="${sess!=null}" th:href="@{/addcart/(user=${sess} , item=${product.itemId})}" class="addcart-btn" >Add to cart</a>
                         <a th:if="${sess==null}" th:href="@{/signin}" class="addcart-btn" >Add to cart</a>
                     </div>

@@ -2,11 +2,13 @@ package com.fot.canteenapp.Controller;
 
 import com.fot.canteenapp.Entity.Inventory;
 import com.fot.canteenapp.Services.InventoryService;
+import com.fot.canteenapp.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -16,7 +18,12 @@ public class AdminController {
     private InventoryService invser;
 
     @RequestMapping("/dashboard")
-    public String viewHomePage(Model model){
+    public String viewHomePage(Model model, HttpSession session){
+
+        //user authenticate
+        if (!auth.getAuth().is_admin(session))
+            return "redirect:/signin";
+
         List<Inventory> listProducts = invser.getAllItems();
         Inventory item = new Inventory();
         model.addAttribute("item", item);
