@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
 
 <head>
     <!-- Required meta tags-->
@@ -39,52 +39,52 @@
 <body class="animsition">
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
-    <header class="header-mobile d-block d-lg-none">
-        <div class="header-mobile__bar">
-            <div class="container-fluid">
-                <div class="header-mobile-inner">
-                    <a class="logo" href="/">
-                        <img src="assets/admin/images/icon/logo.png" alt="CoolAdmin" />
-                    </a>
-                    <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar-mobile">
-            <div class="container-fluid">
-                <ul class="navbar-mobile__list list-unstyled">
-                    <li class="has-sub">
-                        <a class="js-arrow" href="#">
-                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <!-- END HEADER MOBILE-->
-
-    <!-- MENU SIDEBAR-->
-    <aside class="menu-sidebar d-none d-lg-block">
-        <div class="logo">
-            <a href="/      ">
-                <img src="assets/admin/images/icon/logo.png" alt="Cool Admin" />
-            </a>
-        </div>
-<!--        <div class="menu-sidebar__content js-scrollbar1">-->
-<!--            <nav class="navbar-sidebar">-->
-<!--                <ul class="list-unstyled navbar__list">-->
-<!--                    <li class="active has-sub">-->
+<!--    <header class="header-mobile d-block d-lg-none">-->
+<!--        <div class="header-mobile__bar">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="header-mobile-inner">-->
+<!--                    <a class="logo" href="/">-->
+<!--                        <img src="assets/admin/images/icon/logo.png" alt="CoolAdmin" />-->
+<!--                    </a>-->
+<!--                    <button class="hamburger hamburger&#45;&#45;slider" type="button">-->
+<!--                            <span class="hamburger-box">-->
+<!--                                <span class="hamburger-inner"></span>-->
+<!--                            </span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <nav class="navbar-mobile">-->
+<!--            <div class="container-fluid">-->
+<!--                <ul class="navbar-mobile__list list-unstyled">-->
+<!--                    <li class="has-sub">-->
 <!--                        <a class="js-arrow" href="#">-->
 <!--                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>-->
 <!--                    </li>-->
 <!--                </ul>-->
-<!--            </nav>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </header>-->
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+<!--    <aside class="menu-sidebar d-none d-lg-block">-->
+<!--        <div class="logo">-->
+<!--            <a href="/      ">-->
+<!--                <img src="assets/admin/images/icon/logo.png" alt="Cool Admin" />-->
+<!--            </a>-->
 <!--        </div>-->
-    </aside>
+<!--&lt;!&ndash;        <div class="menu-sidebar__content js-scrollbar1">&ndash;&gt;-->
+<!--&lt;!&ndash;            <nav class="navbar-sidebar">&ndash;&gt;-->
+<!--&lt;!&ndash;                <ul class="list-unstyled navbar__list">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li class="active has-sub">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a class="js-arrow" href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;            </nav>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </aside>-->
     <!-- END MENU SIDEBAR-->
 
     <!-- PAGE CONTAINER-->
@@ -95,36 +95,11 @@
                 <div class="container-fluid">
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu  float-right">
-                            <div class="image">
-                                <img src="assets/admin/images/icon/avatar-01.jpg" alt="John Doe" />
-                            </div>
-                            <div class="content">
-                                <a class="js-acc-btn" href="#">john doe</a>
+
+                            <div class="content"  th:if="${sess}">
+                                <a class="js-acc-btn"  th:text="${sess[1]}"></a>
                             </div>
                             <div class="account-dropdown js-dropdown">
-                                <div class="info clearfix">
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="assets/admin/images/icon/avatar-01.jpg" alt="John Doe" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="name">
-                                            <a href="#">john doe</a>
-                                        </h5>
-                                        <span class="email">johndoe@example.com</span>
-                                    </div>
-                                </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-settings"></i>Setting</a>
-                                    </div>
-                                </div>
                                 <div class="account-dropdown__footer">
                                     <a href="#">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
