@@ -36,21 +36,23 @@ public class InventoryController {
     public String viewHomePage(Model model, HttpSession session){
         @SuppressWarnings("unchecked")
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
-        if (user_s.get(3).equals("admin")){
-            return "redirect:/dashboard";
-        }
-        
-        List<Inventory> listProducts = invser.getAllItems();
-        model.addAttribute("listProducts",listProducts);
 
-        if (user_s == null) {
-//            user_s = new ArrayList<>();
-            model.addAttribute("sess", null);
-        }else{
-            model.addAttribute("sess", user_s.get(0));
-        }
+        try {
+           if (user_s.get(3).equals("admin")){
+                return "redirect:/dashboard";
+            }
+        }catch (Exception e){
+        }finally {
+            List<Inventory> listProducts = invser.getAllItems();
+            model.addAttribute("listProducts",listProducts);
 
-        return "home";
+            if (user_s == null) {
+                model.addAttribute("sess", null);
+            }else{
+                model.addAttribute("sess", user_s.get(0));
+            }
+            return "home";
+        }
     }
 
     //proceed order when user pressed order now
