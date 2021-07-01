@@ -34,11 +34,14 @@ public class InventoryController {
     //Request home page
     @RequestMapping("/")
     public String viewHomePage(Model model, HttpSession session){
-        List<Inventory> listProducts = invser.getAllItems();
-        model.addAttribute("listProducts",listProducts);
-
         @SuppressWarnings("unchecked")
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
+        if (user_s.get(3).equals("admin")){
+            return "redirect:/dashboard";
+        }
+        
+        List<Inventory> listProducts = invser.getAllItems();
+        model.addAttribute("listProducts",listProducts);
 
         if (user_s == null) {
 //            user_s = new ArrayList<>();
