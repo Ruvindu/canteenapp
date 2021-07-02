@@ -71,11 +71,11 @@
 
       <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
         <input type="hidden" name="merchant_id" value="1216612">
-        <input type="hidden" name="return_url" value="http://localhost/test-payhere/success.php">
-        <input type="hidden" name="cancel_url" value="http://localhost/test-payhere/cancel.php">
-        <input type="hidden" name="notify_url" value="http://localhost/test-payhere/notify.php">
+        <input type="hidden" name="return_url" value="http://localhost:8080/paymentsuccess">
+        <input type="hidden" name="cancel_url" value="http://localhost:8080/paymentcancel">
+        <input type="hidden" name="notify_url" value="http://localhost:8080/paymentnotify">
 
-        <input type="hidden" name="order_id" th:value="${ItemId}">
+        <input type="hidden" name="order_id" th:value="${OrderId}">
         <input type="hidden" name="currency" value="LKR">
         <input type="hidden" name="last_name" value=" ">
         <input type="hidden" name="address" value=" ">

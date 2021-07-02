@@ -37,11 +37,18 @@ public class OrdersController {
         if (!auth.getAuth().is_user(session))
             return "redirect:/signin";
 
-
-
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
+
+        Orders neworder = new Orders();
+        neworder.setItemId(itemid);
+        neworder.setUserId(Integer.parseInt(user_s.get(0)));
+        neworder.setItemQty(qty);
+        neworder.setStatus(1);
+        neworder.setTotalPrice(amount);
+        orderser.saveOrder(neworder);
+
         model.addAttribute("User",user_s);
-        model.addAttribute("OrderId",orderser.getLastOrder().get(0).getOrderId()+1);
+        model.addAttribute("OrderId",orderser.getLastOrder().get(0).getOrderId());
         model.addAttribute("ItemName",itemname);
         model.addAttribute("Qty",qty);
         model.addAttribute("Amount",amount);
@@ -49,6 +56,18 @@ public class OrdersController {
         return "payment_summary";
 
     }
+
+
+    @RequestMapping(value = "/paymentsuccess", method = RequestMethod.GET)
+    public String paymentsuccess(@RequestParam(value = "order_id") Integer orderid, HttpSession session){
+        //user authenticate
+        if (!auth.getAuth().is_user(session))
+            return "redirect:/signin";
+
+        orderser.UpdatePayedOrder(orderid);
+        return "redirect:/?success";
+    }
+
 
 
 

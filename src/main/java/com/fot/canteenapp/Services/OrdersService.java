@@ -18,14 +18,11 @@ public class OrdersService {
     public void saveOrder(Orders order){
         orderRepo.save(order);
     }
-
-
-    public List<Orders> getLastOrder(){
-        return orderRepo.findLastOrder();
-    }
-
+    public List<Orders> getLastOrder(){ return orderRepo.findLastOrder(); }
     public List<Orders> getAllOrders(){return orderRepo.findAll();}
     public List<Orders> getAllOrdersWithItemName(){return orderRepo.findAllWithItemName();}
-
+    public void UpdatePayedOrder(Integer orderid){
+        orderRepo.updatePayedOrder(orderid);
+    }
 
 }
