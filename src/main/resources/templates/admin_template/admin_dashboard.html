@@ -32,19 +32,20 @@
 
     <!-- Main CSS-->
     <link href="assets/admin/css/theme.css" rel="stylesheet" media="all">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
 
 </head>
 
 <body class="animsition">
 <div class="page-wrapper">
-     HEADER MOBILE
+<!--     HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none">
         <div class="header-mobile__bar">
             <div class="container-fluid">
                 <div class="header-mobile-inner">
                     <a class="logo" href="/">
-                        <img src="assets/admin/images/icon/logo.png" alt="CoolAdmin" />
+                        <span style="font-family: 'Satisfy', cursive;font-size: 36px;font-weight: 400;letter-spacing: 3px;color: #74b800;">Green Foods</span>
                     </a>
                     <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -57,38 +58,44 @@
         <nav class="navbar-mobile">
             <div class="container-fluid">
                 <ul class="navbar-mobile__list list-unstyled">
-                    <li class="has-sub">
+                    <li class="has-sub d-flex justify-content-center mb-3" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 20px 8px #d0d0d0; background: #fff">
                         <a class="js-arrow" href="/">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
-                    <li class="has-sub">
-                        <a class="js-arrow" href="#sales">
-                            <i class="fas fa-tachometer-alt"></i>Sales</a>
+                    <li class="has-sub d-flex justify-content-center mb-3" id="salesLink" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 8px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick()">
+                            <i class="fas fa-book"></i>Sales</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-     END HEADER MOBILE
+<!--     END HEADER MOBILE-->
 
-     MENU SIDEBAR
+<!--     MENU SIDEBAR-->
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
             <a href="/">
-                <img src="assets/admin/images/icon/logo.png" alt="Cool Admin" />
+                <span style="font-family: 'Satisfy', cursive;font-size: 36px;font-weight: 400;letter-spacing: 3px;color: #74b800;">Green Foods</span>
             </a>
         </div>
         <div class="menu-sidebar__content js-scrollbar1">
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
-                    <li class="active has-sub">
+                    <li class="active has-sub d-flex justify-content-center mb-3" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
                         <a class="js-arrow" href="/dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
-                    <li class="has-sub">
-                        <a class="js-arrow" href="#sales">
+                    <li class="has-sub d-flex justify-content-center mb-3" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick()">
                             <i class="fas fa-book"></i>Sales</a>
                     </li>
+                    <script>
+                        function myClick(){
+                            document.getElementById("sales").scrollIntoView();
+                        }
+
+                    </script>
                 </ul>
             </nav>
         </div>
@@ -174,9 +181,25 @@
 
                     <div class="row" id="sales">
                         <div class="col-md-12">
-                            <div class="overview-wrap" >
-                                <h2 class="title-1">Sales Overview</h2>
-
+                            <h2 class="title-1">Sales Overview</h2>
+                            <div class="overview-wrap">
+                                <table class="table mt-4 " style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 20px 8px #d0d0d0; background: #fff">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Total Sales</th>
+                                    </tr>
+                                    </thead>
+<!--                                    <h1 th:text="${listSales}"></h1>-->
+                                    <tbody>
+                                    <tr th:each="sale : ${listSales}">
+                                        <th scope="row"></th>
+                                        <td th:text="${sale.date}"></td>
+                                        <td th:text="${sale.totalSales}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -214,6 +237,7 @@
 
 <!-- Main JS-->
 <script src="assets/admin/js/main.js"></script>
+
 
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
