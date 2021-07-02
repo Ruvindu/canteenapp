@@ -21,7 +21,4 @@ public interface OrdersRepository  extends JpaRepository<Orders,Integer> {
     @Query(value = "SELECT * FROM `orders` ORDER BY `order_id` DESC LIMIT 1",nativeQuery = true)
     List<Orders> findLastOrder();
 
-    @Query(value = "{call GET_ORDERS_WITH_ITEM}", nativeQuery = true)
-    public List<Orders> findAllWithItemName();
-
 }

@@ -30,7 +30,7 @@ public class AdminController {
     @GetMapping("/response")
     @ResponseBody
     public List<Orders>  postResponseController(){
-        List<Orders> listOrders = ordersService.getAllOrdersWithItemName();
+        List<Orders> listOrders = ordersService.getAllOrders();
         return listOrders;
     }
 
@@ -54,7 +54,6 @@ public class AdminController {
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
 
         if (user_s == null) {
-//            user_s = new ArrayList<>();
             model.addAttribute("sess", null);
         }else{
             model.addAttribute("sess", user_s);
@@ -77,6 +76,18 @@ public class AdminController {
     @RequestMapping(value = "/delete/{id}")
     public String deleteItem(@PathVariable(name = "id") Integer id){
         invser.deleteItem(id);
+        return "redirect:/dashboard";
+    }
+
+    @RequestMapping(value = "/issue/{id}")
+    public String issueOrder(@PathVariable(name = "id") Integer id){
+        ordersService.issueOrder(id);
+        return "redirect:/dashboard";
+    }
+
+    @RequestMapping(value = "/cancel/{id}")
+    public String cancelOrder(@PathVariable(name = "id") Integer id){
+        ordersService.cancelOrder(id);
         return "redirect:/dashboard";
     }
 }

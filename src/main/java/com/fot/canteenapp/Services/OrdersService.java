@@ -20,9 +20,20 @@ public class OrdersService {
     }
     public List<Orders> getLastOrder(){ return orderRepo.findLastOrder(); }
     public List<Orders> getAllOrders(){return orderRepo.findAll();}
-    public List<Orders> getAllOrdersWithItemName(){return orderRepo.findAllWithItemName();}
+
     public void UpdatePayedOrder(Integer orderid){
         orderRepo.updatePayedOrder(orderid);
     }
 
+    public void issueOrder(Integer id) {
+        Orders order = orderRepo.findById(id).get();
+        order.setStatus(3);
+        orderRepo.save(order);
+    }
+
+    public void cancelOrder(Integer id) {
+        Orders order = orderRepo.findById(id).get();
+        order.setStatus(0);
+        orderRepo.save(order);
+    }
 }
