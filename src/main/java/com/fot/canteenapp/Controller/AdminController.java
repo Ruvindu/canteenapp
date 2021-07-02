@@ -54,7 +54,6 @@ public class AdminController {
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
 
         if (user_s == null) {
-//            user_s = new ArrayList<>();
             model.addAttribute("sess", null);
         }else{
             model.addAttribute("sess", user_s);
