@@ -27,7 +27,7 @@ public class OrdersService {
 
     public void issueOrder(Integer id) {
         Orders order = orderRepo.findById(id).get();
-        order.setStatus(3);
+        order.setStatus(2);
         orderRepo.save(order);
     }
 
