@@ -22,9 +22,9 @@ public class auth {
 
         try {
             user_s.get(0);
-            System.out.println(user_s.get(3));
+            System.out.println(user_s.get(4));
 
-            if (user_s.get(3).equals("admin")){
+            if (user_s.get(4).equals("admin")){
                 return true;
             }else{
                 return false;

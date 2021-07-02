@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface OrdersRepository  extends JpaRepository<Orders,Integer> {
 
-    @Query(value = "Select * from orders limit 1",nativeQuery = true)
+    @Query(value = "SELECT * FROM `orders` ORDER BY `order_id` DESC LIMIT 1",nativeQuery = true)
     List<Orders> findLastOrder();
 
 }
