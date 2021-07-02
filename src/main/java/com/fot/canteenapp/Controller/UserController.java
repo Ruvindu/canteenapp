@@ -61,6 +61,7 @@ public class UserController {
             user_s.add(logeduser.getId().toString());
             user_s.add(logeduser.getName());
             user_s.add(logeduser.getEmail());
+            user_s.add(logeduser.getPhone());
             user_s.add(logeduser.getRole());
 
             request.getSession().setAttribute("USER_SESSION", user_s);

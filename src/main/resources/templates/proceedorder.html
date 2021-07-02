@@ -118,6 +118,16 @@
                         $("#"+id+" ._value_total_qty").val(parseInt(new_qty));
                     }
                 }
+
+
+                function paynow(id){
+                    let item_name = $("#"+id+" ._value_item_name").val();
+                    let total_qty = parseInt($("#"+id+" ._value_total_qty").val());
+                    let total_amount = parseFloat($("#"+id+" ._value_total_price").val());
+                    console.log(item_name,total_qty,total_amount,id);
+                    window.location.href = "/payments?itemid="+id+"&itemname="+ item_name +"&qty="+total_qty+"&amount="+total_amount;
+                }
+
             </script>
 
 
@@ -131,13 +141,14 @@
                         <input type="hidden" th:value=${sess} th:name="userId">
                         <input type="hidden" th:value=1 th:name="status">
 
+                        <input type="hidden" class="_value_item_name" th:value=${productdata.itemName}>
                         <input type="hidden" class="_value_price_of_one" th:value=${productdata.itemPrice} >
                         <input type="hidden" class="_value_total_price" th:value=${productdata.itemPrice} th:name="totalPrice">
                         <input type="hidden" class="_value_total_qty" value=1 th:name="itemQty">
                         <input type="hidden" class="_value_min" value=1>
                         <input type="hidden" class="_value_max" th:value=${productdata.itemQty}>
 
-                        <a href="#">Roles</a><span>LKR <span class="totalprice" th:text="${productdata.itemPrice}"></span></span>
+                        <a th:text="${productdata.itemName}"></a><span>LKR <span class="totalprice" th:text="${productdata.itemPrice}"></span></span>
                     </div>
                     <div class="menu-ingredients">
                         <label>Quantity </label><input class="qty" type="number" value=1 readonly>
@@ -147,7 +158,9 @@
                         <span>In Stock (<span th:text="${productdata.itemQty}"></span>)</span>
                     </div>
 
-                    <input type="submit" class="btn btn-info float-right d-inline-block mt-4" value="Place the Order">
+                    <input type="button" class="btn btn-success float-right d-inline-block mt-4 ml-3" value="Pay now" th:onclick="'paynow(\'' + ${productdata.itemId} + '\');'">
+                    <input type="submit" class="btn btn-secondary float-right d-inline-block mt-4" value="Cash on Delivery">
+
                 </div>
 
 
@@ -165,7 +178,7 @@
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
-    <div class="container">
+    <div class="container mt-5">
         <h3>Green Foods</h3>
         <p> Health requires healthy foods.</p>
         <div class="social-links">

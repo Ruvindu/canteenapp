@@ -6,9 +6,11 @@ import com.fot.canteenapp.Services.OrdersService;
 import com.fot.canteenapp.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Controller
@@ -27,6 +29,25 @@ public class OrdersController {
         orderser.saveOrder(order);
         return "redirect:/?success";
     }
+
+
+    @RequestMapping(value = "/payments", method = RequestMethod.GET)
+    public String payments(Model model, @RequestParam(value = "itemid") Integer itemid,@RequestParam(value = "itemname") String itemname, @RequestParam(value = "qty") Integer qty, @RequestParam(value = "amount") Float amount, HttpSession session){
+        //user authenticate
+        if (!auth.getAuth().is_user(session))
+            return "redirect:/signin";
+
+        List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
+        model.addAttribute("User",user_s);
+        model.addAttribute("ItemId",itemid);
+        model.addAttribute("ItemName",itemname);
+        model.addAttribute("Qty",qty);
+        model.addAttribute("Amount",amount);
+
+        return "payment_summary";
+
+    }
+
 
 
 }

@@ -39,9 +39,9 @@ public class auth {
 
         try {
             user_s.get(0);
-            System.out.println(user_s.get(3));
+            System.out.println(user_s.get(4));
 
-            if (user_s.get(3).equals("user")){
+            if (user_s.get(4).equals("user")){
                 return true;
             }else{
                 return false;
