@@ -37,6 +37,8 @@ public class OrdersController {
         if (!auth.getAuth().is_user(session))
             return "redirect:/signin";
 
+        System.out.println(orderser.getLastOrder().get(0).getOrderId());
+
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
         model.addAttribute("User",user_s);
         model.addAttribute("ItemId",itemid);
