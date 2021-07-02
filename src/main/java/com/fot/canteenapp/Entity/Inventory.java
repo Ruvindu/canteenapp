@@ -1,6 +1,7 @@
 package com.fot.canteenapp.Entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "inventory")
@@ -18,6 +19,7 @@ public class Inventory {
 
     @Column(name="item_qty")
     private Integer itemQty;
+
 
     public Integer getItemId() {
         return itemId;

@@ -5,6 +5,9 @@ import org.hibernate.criterion.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
+
+import org.springframework.data.jpa.repository.query.Procedure;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,5 +17,9 @@ public interface OrdersRepository  extends JpaRepository<Orders,Integer> {
 
     @Query(value = "Select * from orders limit 1",nativeQuery = true)
     List<Orders> findLastOrder();
+
+    @Query(value = "{call GET_ORDERS_WITH_ITEM}", nativeQuery = true)
+    public List<Orders> findAllWithItemName();
+
 
 }

@@ -1,7 +1,10 @@
 package com.fot.canteenapp.Entity;
 
+import org.springframework.data.jpa.repository.query.Procedure;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -29,6 +32,7 @@ public class Orders {
 
     @Column(name="status")
     private Integer status;
+
 
     public Integer getOrderId() {
         return orderId;
