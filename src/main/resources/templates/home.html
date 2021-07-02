@@ -39,7 +39,7 @@
     <div class="container d-flex align-items-center">
 
         <div class="logo mr-auto">
-            <h1 class="text-light"><a href="index.html"><span>Green Foods</span></a></h1>
+            <h1 class="text-light"><a href="/"><span>Green Foods</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -92,7 +92,7 @@
                             <p class="animate__animated animate__fadeInUp">" Food is an important part of a balanced diet "</p>
                             <div>
                                 <a href="#menu" class="btn-menu animate__animated animate__fadeInUp scrollto">Our Menu</a>
-                                <a href="/signin" class="btn-book animate__animated animate__fadeInUp scrollto">Sign in</a>
+                                <a href="/signin" class="btn-book animate__animated animate__fadeInUp scrollto th:if="${sess==null}">Sign in</a>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                             <p class="animate__animated animate__fadeInUp">" Health requires healthy food "</p>
                             <div>
                                 <a href="#menu" class="btn-menu animate__animated animate__fadeInUp scrollto">Our Menu</a>
-                                <a href="/signin" class="btn-book animate__animated animate__fadeInUp scrollto">Sign in</a>
+                                <a href="/signin" class="btn-book animate__animated animate__fadeInUp scrollto th:if="${sess==null}">Sign in</a>
                             </div>
                         </div>
                     </div>
