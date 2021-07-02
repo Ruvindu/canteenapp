@@ -187,29 +187,16 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Total Sales</th>
                                     </tr>
                                     </thead>
+<!--                                    <h1 th:text="${listSales}"></h1>-->
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
+                                    <tr th:each="sale : ${listSales}">
+                                        <th scope="row"></th>
+                                        <td th:text="${sale.date}"></td>
+                                        <td th:text="${sale.totalSales}"></td>
                                     </tr>
                                     </tbody>
                                 </table>

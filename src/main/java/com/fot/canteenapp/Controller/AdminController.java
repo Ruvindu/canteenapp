@@ -1,7 +1,9 @@
 package com.fot.canteenapp.Controller;
 
 import com.fot.canteenapp.Entity.Inventory;
+import com.fot.canteenapp.Entity.Sales;
 import com.fot.canteenapp.Services.InventoryService;
+import com.fot.canteenapp.Services.SalesServices;
 import com.fot.canteenapp.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,16 @@ public class AdminController {
     @Autowired
     private InventoryService invser;
 
+    @Autowired
+    private SalesServices salesServices;
+
+    @GetMapping("/response")
+    @ResponseBody
+    public List<Sales>  postResponseController(){
+        List<Sales> listSales = salesServices.getAllSales();
+        return listSales;
+    }
+
     @RequestMapping("/dashboard")
     public String viewHomePage(Model model, HttpSession session){
 
@@ -26,8 +38,10 @@ public class AdminController {
 
 
         List<Inventory> listProducts = invser.getAllItems();
+        List<Sales> listSales = salesServices.getAllSales();
         Inventory item = new Inventory();
         model.addAttribute("item", item);
+        model.addAttribute("listSales", listSales);
         model.addAttribute("listProducts",listProducts);
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
 
