@@ -196,15 +196,23 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Date</th>
-                                        <th scope="col">Total Sales</th>
+                                        <th scope="col">User</th>
+                                        <th scope="col">Item</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Net Total</th>
+                                        <th scope="col">Operations</th>
                                     </tr>
                                     </thead>
-                                    <!--                                    <h1 th:text="${listSales}"></h1>-->
+
                                     <tbody>
-                                    <tr th:each="sale : ${listSales}">
-                                        <th scope="row"></th>
-                                        <td th:text="${sale.date}"></td>
-                                        <td th:text="${sale.totalSales}"></td>
+                                    <tr th:if="${order.status} != 0" th:each="order : ${listOrders}">
+                                        <th scope="row" th:text="${order.orderId}"></th>
+                                        <td th:text="${order.orderDate}"></td>
+                                        <td th:text="${order.userId}"></td>
+                                        <td th:text="${order.itemId}"></td>
+                                        <td th:text="${order.itemQty}"></td>
+                                        <td th:text="${order.totalPrice}"></td>
+                                        <td><a class="btn btn-success text-white  mr-1" th:href="@{'/issue/' + ${order.orderId}}">Issue</a><a class="btn btn-danger text-white" th:href="@{'/cancel/' + ${order.orderId}}">Cancel</a><span class="badge badge-warning mx-1" th:if="${order.status} == 2" th:text="PAID"></span></td>
                                     </tr>
                                     </tbody>
                                 </table>
