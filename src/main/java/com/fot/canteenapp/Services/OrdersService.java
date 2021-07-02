@@ -19,8 +19,13 @@ public class OrdersService {
         orderRepo.save(order);
     }
 
+
     public List<Orders> getLastOrder(){
         return orderRepo.findLastOrder();
     }
+
+    public List<Orders> getAllOrders(){return orderRepo.findAll();}
+    public List<Orders> getAllOrdersWithItemName(){return orderRepo.findAllWithItemName();}
+
 
 }

@@ -1,8 +1,10 @@
 package com.fot.canteenapp.Controller;
 
 import com.fot.canteenapp.Entity.Inventory;
+import com.fot.canteenapp.Entity.Orders;
 import com.fot.canteenapp.Entity.Sales;
 import com.fot.canteenapp.Services.InventoryService;
+import com.fot.canteenapp.Services.OrdersService;
 import com.fot.canteenapp.Services.SalesServices;
 import com.fot.canteenapp.auth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,14 @@ public class AdminController {
     @Autowired
     private SalesServices salesServices;
 
+    @Autowired
+    private OrdersService ordersService;
+
     @GetMapping("/response")
     @ResponseBody
-    public List<Sales>  postResponseController(){
-        List<Sales> listSales = salesServices.getAllSales();
-        return listSales;
+    public List<Orders>  postResponseController(){
+        List<Orders> listOrders = ordersService.getAllOrdersWithItemName();
+        return listOrders;
     }
 
     @RequestMapping("/dashboard")
@@ -39,10 +44,13 @@ public class AdminController {
 
         List<Inventory> listProducts = invser.getAllItems();
         List<Sales> listSales = salesServices.getAllSales();
+        List<Orders> listOrders = ordersService.getAllOrders();
+
         Inventory item = new Inventory();
         model.addAttribute("item", item);
         model.addAttribute("listSales", listSales);
         model.addAttribute("listProducts",listProducts);
+        model.addAttribute("listOrders",listOrders);
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
 
         if (user_s == null) {

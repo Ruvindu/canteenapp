@@ -62,8 +62,12 @@
                         <a class="js-arrow" href="/">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
-                    <li class="has-sub d-flex justify-content-center mb-3" id="salesLink" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 8px #d0d0d0; background: #fff">
-                        <a class="js-arrow" href="#" onclick="myClick()">
+                    <li class="has-sub d-flex justify-content-center mb-3 text-center"  style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 8px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick('orders')">
+                            <i class="fas fa-list"></i>Orders</a>
+                    </li>
+                    <li class="has-sub d-flex justify-content-center mb-3"  style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 8px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick('sales')">
                             <i class="fas fa-book"></i>Sales</a>
                     </li>
                 </ul>
@@ -82,17 +86,21 @@
         <div class="menu-sidebar__content js-scrollbar1">
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
-                    <li class="active has-sub d-flex justify-content-center mb-3" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
+                    <li class="active has-sub d-flex justify-content-center mb-3 text-center" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
                         <a class="js-arrow" href="/dashboard">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
-                    <li class="has-sub d-flex justify-content-center mb-3" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
-                        <a class="js-arrow" href="#" onclick="myClick()">
+                    <li class="has-sub d-flex justify-content-center mb-3 text-center"  style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick('orders')">
+                            <i class="fas fa-list"></i>Orders</a>
+                    </li>
+                    <li class="has-sub d-flex justify-content-center mb-3 text-center" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick('sales')">
                             <i class="fas fa-book"></i>Sales</a>
                     </li>
                     <script>
-                        function myClick(){
-                            document.getElementById("sales").scrollIntoView();
+                        function myClick(id){
+                            document.getElementById(id).scrollIntoView();
                         }
 
                     </script>
@@ -179,7 +187,32 @@
                         </div>
                     </div>
 
-                    <div class="row" id="sales">
+                    <div class="row" id="orders">
+                        <div class="col-md-12">
+                            <h2 class="title-1">Orders</h2>
+                            <div class="overview-wrap">
+                                <table class="table mt-4 " style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 20px 8px #d0d0d0; background: #fff">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Total Sales</th>
+                                    </tr>
+                                    </thead>
+                                    <!--                                    <h1 th:text="${listSales}"></h1>-->
+                                    <tbody>
+                                    <tr th:each="sale : ${listSales}">
+                                        <th scope="row"></th>
+                                        <td th:text="${sale.date}"></td>
+                                        <td th:text="${sale.totalSales}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5" id="sales">
                         <div class="col-md-12">
                             <h2 class="title-1">Sales Overview</h2>
                             <div class="overview-wrap">
