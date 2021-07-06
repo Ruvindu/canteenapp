@@ -19,6 +19,7 @@ public class OrdersController {
 
     @Autowired
     private OrdersService orderser;
+    @Autowired
     private EmailSenderService mailser;
 
 
