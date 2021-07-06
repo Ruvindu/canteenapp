@@ -2,6 +2,7 @@ package com.fot.canteenapp.Controller;
 
 
 import com.fot.canteenapp.Entity.Orders;
+import com.fot.canteenapp.Services.EmailSenderService;
 import com.fot.canteenapp.Services.OrdersService;
 import com.fot.canteenapp.auth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class OrdersController {
 
     @Autowired
     private OrdersService orderser;
+    private EmailSenderService mailser;
 
 
     @RequestMapping(value = "/placeorder", method = RequestMethod.POST)
@@ -27,6 +29,7 @@ public class OrdersController {
             return "redirect:/signin";
 
         orderser.saveOrder(order);
+        mailser.sendSimpleEmail();
         return "redirect:/?success";
     }
 

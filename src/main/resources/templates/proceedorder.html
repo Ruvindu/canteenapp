@@ -158,8 +158,10 @@
                         <span>In Stock (<span th:text="${productdata.itemQty}"></span>)</span>
                     </div>
 
-                    <input type="button" class="btn btn-success float-right d-inline-block mt-4 ml-3" value="Pay now" th:onclick="'paynow(\'' + ${productdata.itemId} + '\');'">
-                    <input type="submit" class="btn btn-secondary float-right d-inline-block mt-4" value="Cash on Delivery">
+                    <input th:if="${productdata.itemQty>0}" type="button" class="btn btn-success float-right d-inline-block mt-4 ml-3" value="Pay now" th:onclick="'paynow(\'' + ${productdata.itemId} + '\');'">
+                    <input th:if="${productdata.itemQty>0}" type="submit" class="btn btn-secondary float-right d-inline-block mt-4" value="Cash on Delivery">
+
+                    <a th:if="${productdata.itemQty<=0}" type="button"  th:href="@{/}" class="btn btn-warning d-inline-block mt-4 float-right text-white" >Back to Home</a>
 
                 </div>
 
