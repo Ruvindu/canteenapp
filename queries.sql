@@ -23,9 +23,16 @@ AFTER INSERT ON `orders` FOR EACH ROW
 	UPDATE `inventory` SET `item_qty`= `item_qty`- NEW.order_qty WHERE `item_id`= NEW.item_id;
  END
 
-
-CREATE PROCEDURE `getDailySales`() BEGIN DECLARE sum_total INT DEFAULT 0; SELECT SUM(orders.total_price) into sum_total FROM `inventory`,`orders` WHERE `inventory`.`item_id` = `orders`.`item_id` AND DATE(`orders`.`order_date`) = CURRENT_DATE; INSERT INTO `sales` (`date`, `total_sales`) VALUES (CURRENT_DATE, sum_total); END
+DELIMITER //  
+CREATE PROCEDURE `getDailySales`()
+	BEGIN DECLARE sum_total INT DEFAULT 0; SELECT SUM(orders.total_price) into sum_total FROM `inventory`,`orders` WHERE `inventory`.`item_id` = `orders`.`item_id` AND DATE(`orders`.`order_date`) = CURRENT_DATE; INSERT INTO `sales` (`date`, `total_sales`) VALUES (CURRENT_DATE, sum_total); END
+END //
 
 CREATE EVENT `sales_event` ON SCHEDULE EVERY 1 DAY STARTS '2021-07-03 20:00:00' ON COMPLETION PRESERVE ENABLE DO CALL getDailySales() 
 
 DROP EVENT `sales_event`; CREATE DEFINER=`root`@`localhost` EVENT `sales_event` ON SCHEDULE EVERY 1 DAY STARTS '2021-07-06 11:15:11' ON COMPLETION PRESERVE ENABLE DO CALL getDailySales()
+
+DELIMITER //  
+CREATE PROCEDURE sales_event()
+BEGIN DECLARE sum_total INT DEFAULT 0; SELECT SUM(orders.total_price) into sum_total FROM `inventory`,`orders` WHERE `inventory`.`item_id` = `orders`.`item_id` AND DATE(`orders`.`order_date`) = CURRENT_DATE AND orders.status = 3; INSERT INTO `sales` (`date`, `total_sales`) VALUES (CURRENT_DATE, sum_total); 
+END //
