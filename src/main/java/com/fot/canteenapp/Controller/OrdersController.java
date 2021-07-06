@@ -34,7 +34,7 @@ public class OrdersController {
         List<String> user_s = (List<String>) session.getAttribute("USER_SESSION");
         String to = user_s.get(2);
         String body = "Order id - "+order.getOrderId()+"\nQuantitiy - "+order.getItemQty()+"\nAmount - "+ order.getTotalPrice();
-        
+//        System.out.println(body);
         mailser.sendSimpleEmail(to,body);
         return "redirect:/?success";
     }
