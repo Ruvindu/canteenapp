@@ -7,6 +7,15 @@ END //
 
 DELIMITER ;  
 
+DELIMITER //  
+CREATE PROCEDURE get_my_cart(IN uid INT)
+BEGIN  
+	SELECT `cart`.`cart_id`, `cart`.`item_id`, `cart`.`user_id`, `inventory`.`item_name`, `inventory`.`item_price`, `inventory`.`item_qty` FROM `cart`,`inventory` WHERE `cart`.`item_id`=`inventory`.`item_id` AND `user_id` = uid; 
+END //  
+
+DELIMITER ;
+
+call get_my_cart(1);
 
 CREATE TRIGGER `decrease_inventory` 
 AFTER INSERT ON `orders` FOR EACH ROW
