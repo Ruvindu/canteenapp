@@ -7,7 +7,6 @@ END //
 
 DELIMITER ;  
 
-
 DELIMITER //  
 CREATE PROCEDURE get_my_cart(IN uid INT)
 BEGIN  
@@ -18,27 +17,15 @@ DELIMITER ;
 
 call get_my_cart(1);
 
-
-
 CREATE TRIGGER `decrease_inventory` 
 AFTER INSERT ON `orders` FOR EACH ROW
  BEGIN 
 	UPDATE `inventory` SET `item_qty`= `item_qty`- NEW.order_qty WHERE `item_id`= NEW.item_id;
  END
- 
- 
-DELIMITER //  
-CREATE PROCEDURE update_payed_order(IN orderid INT)
-BEGIN  
-UPDATE `orders` SET `status`=2 WHERE `order_id` = orderid;
-END //  
-
-DELIMITER ;
-
-call update_payed_order(1);
-
 
 
 CREATE PROCEDURE `getDailySales`() BEGIN DECLARE sum_total INT DEFAULT 0; SELECT SUM(orders.total_price) into sum_total FROM `inventory`,`orders` WHERE `inventory`.`item_id` = `orders`.`item_id` AND DATE(`orders`.`order_date`) = CURRENT_DATE; INSERT INTO `sales` (`date`, `total_sales`) VALUES (CURRENT_DATE, sum_total); END
 
-CREATE EVENT `sales_event` ON SCHEDULE EVERY 1 DAY STARTS '2021-07-03 20:00:00' ON COMPLETION PRESERVE ENABLE DO CALL getDailySales()
+CREATE EVENT `sales_event` ON SCHEDULE EVERY 1 DAY STARTS '2021-07-03 20:00:00' ON COMPLETION PRESERVE ENABLE DO CALL getDailySales() 
+
+DROP EVENT `sales_event`; CREATE DEFINER=`root`@`localhost` EVENT `sales_event` ON SCHEDULE EVERY 1 DAY STARTS '2021-07-06 11:15:11' ON COMPLETION PRESERVE ENABLE DO CALL getDailySales()

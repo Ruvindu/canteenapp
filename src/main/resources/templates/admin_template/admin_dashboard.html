@@ -67,6 +67,10 @@
                             <i class="fas fa-list"></i>Orders</a>
                     </li>
                     <li class="has-sub d-flex justify-content-center mb-3"  style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 8px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick('Delivered')">
+                            <i class="fas fa-book"></i>Delivered</a>
+                    </li>
+                    <li class="has-sub d-flex justify-content-center mb-3"  style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 8px #d0d0d0; background: #fff">
                         <a class="js-arrow" href="#" onclick="myClick('sales')">
                             <i class="fas fa-book"></i>Sales</a>
                     </li>
@@ -93,6 +97,10 @@
                     <li class="has-sub d-flex justify-content-center mb-3 text-center"  style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
                         <a class="js-arrow" href="#" onclick="myClick('orders')">
                             <i class="fas fa-list"></i>Orders</a>
+                    </li>
+                    <li class="has-sub d-flex justify-content-center mb-3 text-center" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
+                        <a class="js-arrow" href="#" onclick="myClick('Delivered')">
+                            <i class="fas fa-book"></i>Delivered</a>
                     </li>
                     <li class="has-sub d-flex justify-content-center mb-3 text-center" style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 10px 3px #d0d0d0; background: #fff">
                         <a class="js-arrow" href="#" onclick="myClick('sales')">
@@ -205,7 +213,7 @@
                                     </thead>
 
                                     <tbody>
-                                    <tr th:if="${order.status} != 0" th:each="order : ${listOrders}">
+                                    <tr th:if="${order.status != 0 and order.status != 3}" th:each="order : ${listOrders}">
                                         <th scope="row" th:text="${order.orderId}"></th>
                                         <td th:text="${order.orderDate}"></td>
                                         <td th:text="${order.userId}"></td>
@@ -219,6 +227,38 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row mt-5" id="Delivered">
+                        <div class="col-md-12">
+                            <h2 class="title-1">Delivered</h2>
+                            <div class="overview-wrap">
+                                <table class="table mt-4 " style="border-radius: 10px;cursor: pointer; box-shadow: 0 0 20px 8px #d0d0d0; background: #fff">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">User</th>
+                                        <th scope="col">Item</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Net Total</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr th:if="${order.status eq 3 }" th:each="order : ${listOrders}">
+                                        <th scope="row" th:text="${order.orderId}"></th>
+                                        <td th:text="${order.orderDate}"></td>
+                                        <td th:text="${order.userId}"></td>
+                                        <td th:text="${order.itemId}"></td>
+                                        <td th:text="${order.itemQty}"></td>
+                                        <td th:text="${order.totalPrice}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="row mt-5" id="sales">
                         <div class="col-md-12">
