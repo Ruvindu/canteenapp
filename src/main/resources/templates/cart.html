@@ -120,28 +120,30 @@
                 }
             </script>
 
-
-
+            <div class="mt-5 mb-5"  th:if="${#lists.isEmpty(cartlist)}">
+                <div class="alert alert-danger">Cart is empty!</div>
+            </div>
+<!--            <input type="hidden" th:value="${netamount}">-->
             <div class="row menu-container">
 
 
-                <div class="col-lg-6 menu-item filter-starters" id="1">
-                    <div class="menu-content">
-                        <input type="hidden" class="_value_price_of_one" value=30.00>
-                        <input type="hidden" class="_value_total_price" value=30.00>
-                        <input type="hidden" class="_value_total_qty" value=1>
-                        <input type="hidden" class="_value_min" value=1>
-                        <input type="hidden" class="_value_max" value=5>
-                        <a href="#">Roles</a><span>LKR<span class="totalprice">30.00</span></span>
-                    </div>
-                    <div class="menu-ingredients">
-                        <label>Quantity </label><input class="qty" type="number" value=1 readonly>
-                        <div onclick="incqty(1)">+</div>
-                        <div onclick="decqty(1)">-</div>
+                <div class="col-lg-6 menu-item filter-starters" th:each="cartdata : ${cartlist}" th:id="${cartdata.cartId}">
+                        <div class="menu-content" >
+                            <input type="hidden" class="_value_price_of_one" th:value="${cartdata.itemPrice}">
+                            <input type="hidden" class="_value_total_price" th:value="${cartdata.itemPrice}">
+                            <input type="hidden" class="_value_total_qty" th:value=1>
+                            <input type="hidden" class="_value_min" th:value=1>
+                            <input type="hidden" class="_value_max" th:value="${cartdata.itemQty}">
+                            <a href="#" th:text="${cartdata.itemName}"></a><span>LKR<span class="totalprice" th:text="${cartdata.itemPrice}"></span></span>
+                        </div>
+                        <div class="menu-ingredients">
+                            <label>Quantity </label><input class="qty" type="number" value=1 readonly>
+                            <div th:onclick="'incqty(\'' + ${cartdata.cartId} + '\');'">+</div>
+                            <div th:onclick="'decqty(\'' + ${cartdata.cartId} + '\');'">-</div>
 
-                        <span>In Stock (5)</span>
-                        <span><a href="/remove">Remove</a></span>
-                    </div>
+                            <span>In Stock (<span th:text="${cartdata.itemQty}"></span>)</span>
+                            <span><a th:href="@{/remove/(id=${cartdata.cartId}) }">Remove</a></span>
+                        </div>
                 </div>
 
 
@@ -153,7 +155,7 @@
             </div>
 
 
-            <div class="text-center mt-5">
+            <div class="text-center mt-5" th:if="${not #lists.isEmpty(cartlist)}">
                 <div class="mb-3">Net Total : </div>
                 <a href="/order" class="btn btn-info">Order now</a>
             </div>
