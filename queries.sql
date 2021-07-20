@@ -46,7 +46,7 @@ SELECT * FROM `orders` WHERE DATE(`order_date`)=d;
 END //
 
 
-DELIMITER $$
+DELIMITER //
 CREATE FUNCTION totalSale(
     d date
 )
@@ -58,7 +58,7 @@ BEGIN
 SELECT SUM(total_price) INTO sale FROM `orders` WHERE DATE(`order_date`)=d;
 
 RETURN (sale);
-END$$
+END//
 DELIMITER ;
 
 
